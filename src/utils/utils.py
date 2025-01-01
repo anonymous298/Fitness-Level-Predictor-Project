@@ -37,6 +37,31 @@ def save_model(file_path: str, model):
         logger.error(e)
         raise CustomException(e, sys)
 
+def load_object(file_path):
+    '''
+    This function will take the file path and returns the loaded model.
+
+    Args:
+        file_path: file path where the model have to be loaded.
+
+    Returns:
+        loaded model.
+    '''
+
+    try:
+        logger.info('Loading our model from path')
+        
+        with open(file_path, 'rb') as file:
+            model = dill.load(file)
+
+        logger.info('Model Loaded Successfully')
+
+        return model
+    
+    except Exception as e:
+        logger.error(e)
+        raise CustomException(e, sys)
+
 def get_callbacks():
     '''
     This method will return callbacks for our Neural Network model.

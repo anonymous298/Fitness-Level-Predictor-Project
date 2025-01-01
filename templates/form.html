@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Assessment Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .section-title {
+            color: #0d6efd;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .form-select, .form-control {
+            border-radius: 8px;
+        }
+        .btn-submit {
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-container">
+                    <h2 class="text-center mb-4">Fitness Assessment Form</h2>
+                    <form action="/form" method="POST">
+                        
+                        {% if prediction is defined %}
+                        <div class="alert alert-success mb-4" role="alert">
+                            <h4 class="alert-heading">Your Fitness Prediction</h4>
+                            <p class="mb-0">Prediction Score: {{ prediction[0][0]|round(2) }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Personal Information -->
+                        <h4 class="section-title">Personal Information</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" required min="15" max="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="height_cm" class="form-label">Height (cm)</label>
+                                <input type="number" class="form-control" id="height_cm" name="height_cm" required min="100" max="250" oninput="calculateBMI()">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="weight_kg" class="form-label">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight_kg" name="weight_kg" required min="30" max="300" oninput="calculateBMI()">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bmi" class="form-label">BMI</label>
+                                <input type="number" class="form-control" id="bmi" name="bmi" readonly step="0.01">
+                            </div>
+                        </div>
+
+                        <!-- Activity Information -->
+                        <h4 class="section-title">Activity Details</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="activity_type" class="form-label">Activity Type</label>
+                                <select class="form-select" id="activity_type" name="activity_type" required>
+                                    <option value="">Select activity</option>
+                                    <option value="Dancing">Dancing</option>
+                                    <option value="Swimming">Swimming</option>
+                                    <option value="Weight Training">Weight Training</option>
+                                    <option value="HIIT">HIIT</option>
+                                    <option value="Running">Running</option>
+                                    <option value="Walking">Walking</option>
+                                    <option value="Tennis">Tennis</option>
+                                    <option value="Basketball">Basketball</option>
+                                    <option value="Yoga">Yoga</option>
+                                    <option value="Cycling">Cycling</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="duration_minutes" class="form-label">Duration (minutes)</label>
+                                <input type="number" class="form-control" id="duration_minutes" name="duration_minutes" required min="0" max="500">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="intensity" class="form-label">Intensity</label>
+                                <select class="form-select" id="intensity" name="intensity" required>
+                                    <option value="">Select intensity</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="calories_burned" class="form-label">Calories Burned</label>
+                                <input type="number" class="form-control" id="calories_burned" name="calories_burned" required min="0" max="5000">
+                            </div>
+                        </div>
+
+                        <!-- Health Metrics -->
+                        <h4 class="section-title">Health Metrics</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="avg_heart_rate" class="form-label">Average Heart Rate (bpm)</label>
+                                <input type="number" class="form-control" id="avg_heart_rate" name="avg_heart_rate" required min="40" max="220">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="resting_heart_rate" class="form-label">Resting Heart Rate (bpm)</label>
+                                <input type="number" class="form-control" id="resting_heart_rate" name="resting_heart_rate" required min="40" max="120">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="blood_pressure_systolic" class="form-label">Blood Pressure Systolic</label>
+                                <input type="number" class="form-control" id="blood_pressure_systolic" name="blood_pressure_systolic" required min="70" max="200">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="blood_pressure_diastolic" class="form-label">Blood Pressure Diastolic</label>
+                                <input type="number" class="form-control" id="blood_pressure_diastolic" name="blood_pressure_diastolic" required min="40" max="130">
+                            </div>
+                        </div>
+
+                        <!-- Lifestyle Factors -->
+                        <h4 class="section-title">Lifestyle Factors</h4>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="hours_sleep" class="form-label">Hours of Sleep</label>
+                                <input type="number" class="form-control" id="hours_sleep" name="hours_sleep" required min="0" max="24" step="0.5">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stress_level" class="form-label">Stress Level (1-10)</label>
+                                <input type="number" class="form-control" id="stress_level" name="stress_level" required min="1" max="10">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="daily_steps" class="form-label">Daily Steps</label>
+                                <input type="number" class="form-control" id="daily_steps" name="daily_steps" required min="0" max="100000">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="hydration_level" class="form-label">Hydration Level (1-10)</label>
+                                <input type="number" class="form-control" id="hydration_level" name="hydration_level" required min="1" max="10">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="smoking_status" class="form-label">Smoking Status</label>
+                                <select class="form-select" id="smoking_status" name="smoking_status" required>
+                                    <option value="">Select status</option>
+                                    <option value="Never">Never Smoked</option>
+                                    <option value="Former">Former Smoker</option>
+                                    <option value="Current">Current Smoker</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                Get Fitness Prediction
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function calculateBMI() {
+        const height = document.getElementById('height_cm').value / 100; // Convert cm to meters
+        const weight = document.getElementById('weight_kg').value;
+        
+        if (height && weight) {
+            const bmi = weight / (height * height);
+            document.getElementById('bmi').value = bmi.toFixed(2);
+        }
+    }
+    </script>
+</body>
+</html>

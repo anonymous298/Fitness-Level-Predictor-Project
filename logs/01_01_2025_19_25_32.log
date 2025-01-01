@@ -1,0 +1,21 @@
+[ 2025-01-01 19:25:37,828 ] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2025-01-01 19:25:37,842 ] 97 werkzeug - INFO -  * Debugger PIN: 772-458-025
+[ 2025-01-01 19:26:37,205 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:26:37] "GET / HTTP/1.1" 200 -
+[ 2025-01-01 19:26:44,007 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:26:44] "GET /form HTTP/1.1" 200 -
+[ 2025-01-01 19:26:58,681 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:26:58] "GET / HTTP/1.1" 200 -
+[ 2025-01-01 19:27:05,397 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:27:05] "GET /form HTTP/1.1" 200 -
+[ 2025-01-01 19:28:45,715 ] 89 prediction-pipeline - INFO - DataFrame Gathered
+[ 2025-01-01 19:28:45,716 ] 112 prediction-pipeline - INFO - Prediction Started
+[ 2025-01-01 19:28:45,718 ] 114 prediction-pipeline - INFO - Loading Preprocessor
+[ 2025-01-01 19:28:45,718 ] 52 utils - INFO - Loading our model from path
+[ 2025-01-01 19:28:54,646 ] 57 utils - INFO - Model Loaded Successfully
+[ 2025-01-01 19:28:54,646 ] 117 prediction-pipeline - INFO - Loading our model
+[ 2025-01-01 19:28:57,769 ] 256 absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+[ 2025-01-01 19:28:57,786 ] 120 prediction-pipeline - INFO - Applying Transformation on our Input qurie
+[ 2025-01-01 19:28:57,839 ] 132 prediction-pipeline - ERROR - columns are missing: {'bmi'}
+[ 2025-01-01 19:28:57,909 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:28:57] "[35m[1mPOST /form HTTP/1.1[0m" 500 -
+[ 2025-01-01 19:28:58,050 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:28:58] "GET /form?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[ 2025-01-01 19:28:58,306 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:28:58] "GET /form?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[ 2025-01-01 19:28:58,667 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:28:58] "GET /form?__debugger__=yes&cmd=resource&f=console.png&s=r0beKTBY9my93WCDfjmX HTTP/1.1" 200 -
+[ 2025-01-01 19:28:58,911 ] 97 werkzeug - INFO - 127.0.0.1 - - [01/Jan/2025 19:28:58] "GET /form?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[ 2025-01-01 19:33:26,273 ] 97 werkzeug - INFO -  * Detected change in 'F:\\Projects\\Fitness-Level-Predictor-Project\\src\\pipe\\prediction_pipeline.py', reloading
