@@ -11,6 +11,7 @@ from sqlalchemy.sql.ddl import exc
 from src.components import data_ingestion
 from src.utils.exception import CustomException
 from src.utils.logger import get_logger
+from src.utils.utils import save_model
 
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
@@ -20,7 +21,14 @@ from sklearn.impute import SimpleImputer
 
 logger = get_logger('data-preprocessing')
 
+@dataclass
+class PreprocessorPath:
+    preprocessor_path: str = os.path.join('model', 'preprocessor.pkl')
+
 class DataPreprocessing:
+    def __init__(self):
+        self.preprocessor_path = PreprocessorPath()
+
     def get_preprocessor(self, independent_data):
         '''
         This method will create our preprocessor object and returns it.
@@ -139,6 +147,11 @@ class DataPreprocessing:
             X_test = preprocessor.transform(X_test)
 
             logger.info('Data Preprocessing Completed')
+
+            save_model(
+                self.preprocessor_path.preprocessor_path,
+                preprocessor
+            )
 
             return (
                 X_train, 
