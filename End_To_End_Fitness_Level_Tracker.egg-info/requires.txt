@@ -1,4 +1,4 @@
-numpy 
+numpy
 pandas
 scikit-learn
 matplotlib
@@ -6,6 +6,3 @@ seaborn
 tensorflow
 dvc
 mlflow
-dagshub
-dill
-# -e .

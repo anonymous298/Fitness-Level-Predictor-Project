@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: End-To-End-Fitness-Level-Tracker
+Version: 0.0.1
+Summary: this package is about ML Project
+Author: Talha
+Author-email: tackletalha@gmail.com
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: tensorflow
+Requires-Dist: dvc
+Requires-Dist: mlflow

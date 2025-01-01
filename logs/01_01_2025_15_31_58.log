@@ -1,0 +1,49 @@
+[ 2025-01-01 15:32:08,841 ] 11 training-pipeline - INFO - Training Pipeline started
+[ 2025-01-01 15:32:08,842 ] 36 data-ingestion - INFO - Data Ingestion started
+[ 2025-01-01 15:32:11,075 ] 38 data-ingestion - INFO - Clean Data Loaded
+[ 2025-01-01 15:32:11,075 ] 40 data-ingestion - INFO - Splitting our data to train and test
+[ 2025-01-01 15:32:11,486 ] 43 data-ingestion - INFO - Creating our Artifacts Folder if not exists
+[ 2025-01-01 15:32:11,486 ] 46 data-ingestion - INFO - Saving our train data to Artifacts
+[ 2025-01-01 15:32:18,408 ] 49 data-ingestion - INFO - Saving our test data to Artifacts
+[ 2025-01-01 15:32:21,859 ] 52 data-ingestion - INFO - Data Ingestion Completed
+[ 2025-01-01 15:32:21,911 ] 135 data-preprocessing - INFO - Data Preprocessing Started
+[ 2025-01-01 15:32:21,914 ] 91 data-preprocessing - INFO - Loading our train and test data from path
+[ 2025-01-01 15:32:23,723 ] 94 data-preprocessing - INFO - Data Loaded
+[ 2025-01-01 15:32:23,723 ] 96 data-preprocessing - INFO - Splitting our data to Independent and Dependent Features
+[ 2025-01-01 15:32:23,907 ] 107 data-preprocessing - INFO - Data Splitted successfully
+[ 2025-01-01 15:32:23,920 ] 44 data-preprocessing - INFO - Creating our Preprocessor object
+[ 2025-01-01 15:32:23,920 ] 46 data-preprocessing - INFO - Extracting columns
+[ 2025-01-01 15:32:23,977 ] 50 data-preprocessing - INFO - Creating our pipeline
+[ 2025-01-01 15:32:23,977 ] 61 data-preprocessing - INFO - Pipeline Created Successfully
+[ 2025-01-01 15:32:23,977 ] 63 data-preprocessing - INFO - Creating our ColumnTransformer Object
+[ 2025-01-01 15:32:23,977 ] 70 data-preprocessing - INFO - Preprocessor Object Created Successfully
+[ 2025-01-01 15:32:23,977 ] 141 data-preprocessing - INFO - Applying Transformation
+[ 2025-01-01 15:32:23,977 ] 143 data-preprocessing - INFO - Transforming Train data
+[ 2025-01-01 15:32:25,502 ] 146 data-preprocessing - INFO - Transforming Test data
+[ 2025-01-01 15:32:25,946 ] 149 data-preprocessing - INFO - Data Preprocessing Completed
+[ 2025-01-01 15:32:25,946 ] 27 utils - INFO - Saving Model to path
+[ 2025-01-01 15:32:25,961 ] 34 utils - INFO - Model Saved Successfully
+[ 2025-01-01 15:32:25,961 ] 79 model-trainer - INFO - Model Training Started
+[ 2025-01-01 15:32:25,961 ] 40 model-trainer - INFO - Building our Neural Network Architecture
+[ 2025-01-01 15:32:28,619 ] 52 model-trainer - INFO - Compiling Our Model
+[ 2025-01-01 15:32:28,632 ] 56 model-trainer - INFO - Model Builded Successfully
+[ 2025-01-01 15:32:28,632 ] 49 utils - INFO - Initiating Callbacks for our model
+[ 2025-01-01 15:32:28,633 ] 58 utils - INFO - Callbacks Created
+[ 2025-01-01 15:37:37,648 ] 95 model-trainer - INFO - Model Training Completed Sucessfully
+[ 2025-01-01 15:37:37,648 ] 97 model-trainer - INFO - Saving our model
+[ 2025-01-01 15:37:37,648 ] 83 absl - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+[ 2025-01-01 15:37:37,959 ] 99 model-trainer - INFO - Model Saved Sucessfully
+[ 2025-01-01 15:37:37,961 ] 31 model-evaluation - INFO - Model Evaluation Started
+[ 2025-01-01 15:37:37,961 ] 33 model-evaluation - INFO - Loading our saved Model
+[ 2025-01-01 15:37:38,060 ] 256 absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+[ 2025-01-01 15:37:38,067 ] 36 model-evaluation - INFO - Evaluating Model For Training Data
+[ 2025-01-01 15:38:01,449 ] 39 model-evaluation - INFO - Evaluating Model For Testing Data
+[ 2025-01-01 15:38:11,208 ] 42 model-evaluation - INFO - Connecting to DagsHub Client
+[ 2025-01-01 15:38:12,641 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-01-01 15:38:12,692 ] 107 dagshub - INFO - Accessing as anonymous298
+[ 2025-01-01 15:38:13,302 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/anonymous298/Fitness-Level-Predictor-Project "HTTP/1.1 200 OK"
+[ 2025-01-01 15:38:13,864 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-01-01 15:38:13,867 ] 107 dagshub - INFO - Initialized MLflow to track repo "anonymous298/Fitness-Level-Predictor-Project"
+[ 2025-01-01 15:38:13,869 ] 107 dagshub - INFO - Repository anonymous298/Fitness-Level-Predictor-Project initialized!
+[ 2025-01-01 15:38:13,869 ] 45 model-evaluation - INFO - Experiment Tracking Started
+[ 2025-01-01 15:39:17,721 ] 59 model-evaluation - ERROR - API request to https://dagshub.com/anonymous298/Fitness-Level-Predictor-Project.mlflow/api/2.0/mlflow/runs/get failed with exception HTTPSConnectionPool(host='dagshub.com', port=443): Max retries exceeded with url: /anonymous298/Fitness-Level-Predictor-Project.mlflow/api/2.0/mlflow/runs/get?run_uuid=experiment_1&run_id=experiment_1 (Caused by ResponseError('too many 500 error responses'))

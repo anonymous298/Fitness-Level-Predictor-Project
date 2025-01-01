@@ -1,0 +1,30 @@
+[ 2025-01-01 15:31:17,987 ] 11 training-pipeline - INFO - Training Pipeline started
+[ 2025-01-01 15:31:17,987 ] 36 data-ingestion - INFO - Data Ingestion started
+[ 2025-01-01 15:31:19,534 ] 38 data-ingestion - INFO - Clean Data Loaded
+[ 2025-01-01 15:31:19,535 ] 40 data-ingestion - INFO - Splitting our data to train and test
+[ 2025-01-01 15:31:19,777 ] 43 data-ingestion - INFO - Creating our Artifacts Folder if not exists
+[ 2025-01-01 15:31:19,777 ] 46 data-ingestion - INFO - Saving our train data to Artifacts
+[ 2025-01-01 15:31:24,573 ] 49 data-ingestion - INFO - Saving our test data to Artifacts
+[ 2025-01-01 15:31:26,779 ] 52 data-ingestion - INFO - Data Ingestion Completed
+[ 2025-01-01 15:31:26,811 ] 135 data-preprocessing - INFO - Data Preprocessing Started
+[ 2025-01-01 15:31:26,812 ] 91 data-preprocessing - INFO - Loading our train and test data from path
+[ 2025-01-01 15:31:28,159 ] 94 data-preprocessing - INFO - Data Loaded
+[ 2025-01-01 15:31:28,159 ] 96 data-preprocessing - INFO - Splitting our data to Independent and Dependent Features
+[ 2025-01-01 15:31:28,219 ] 107 data-preprocessing - INFO - Data Splitted successfully
+[ 2025-01-01 15:31:28,229 ] 44 data-preprocessing - INFO - Creating our Preprocessor object
+[ 2025-01-01 15:31:28,229 ] 46 data-preprocessing - INFO - Extracting columns
+[ 2025-01-01 15:31:28,271 ] 50 data-preprocessing - INFO - Creating our pipeline
+[ 2025-01-01 15:31:28,271 ] 61 data-preprocessing - INFO - Pipeline Created Successfully
+[ 2025-01-01 15:31:28,271 ] 63 data-preprocessing - INFO - Creating our ColumnTransformer Object
+[ 2025-01-01 15:31:28,271 ] 70 data-preprocessing - INFO - Preprocessor Object Created Successfully
+[ 2025-01-01 15:31:28,271 ] 141 data-preprocessing - INFO - Applying Transformation
+[ 2025-01-01 15:31:28,271 ] 143 data-preprocessing - INFO - Transforming Train data
+[ 2025-01-01 15:31:29,625 ] 146 data-preprocessing - INFO - Transforming Test data
+[ 2025-01-01 15:31:29,970 ] 149 data-preprocessing - INFO - Data Preprocessing Completed
+[ 2025-01-01 15:31:29,970 ] 27 utils - INFO - Saving Model to path
+[ 2025-01-01 15:31:29,982 ] 34 utils - INFO - Model Saved Successfully
+[ 2025-01-01 15:31:29,982 ] 79 model-trainer - INFO - Model Training Started
+[ 2025-01-01 15:31:29,982 ] 40 model-trainer - INFO - Building our Neural Network Architecture
+[ 2025-01-01 15:31:30,143 ] 52 model-trainer - INFO - Compiling Our Model
+[ 2025-01-01 15:31:30,149 ] 61 model-trainer - ERROR - Trainer.compile() got an unexpected keyword argument 'optimizier'
+[ 2025-01-01 15:31:30,150 ] 104 model-trainer - ERROR - Error has occured at [f:\projects\fitness-level-predictor-project\src\components\model_trainer.py] at [54] -> Trainer.compile() got an unexpected keyword argument 'optimizier'
