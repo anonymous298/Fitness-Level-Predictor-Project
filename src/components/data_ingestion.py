@@ -52,8 +52,8 @@ class DataIngestion:
             logger.info('Data Ingestion Completed')
 
             return (
-                train_data,
-                test_data
+                self.data_paths.train_data_path,
+                self.data_paths.test_data_path
             )
 
         except Exception as e:
